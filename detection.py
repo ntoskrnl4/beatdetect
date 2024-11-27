@@ -174,4 +174,7 @@ with source.recorder(samplerate=sr, blocksize=histsize) as mic:
         # if yes, sticky to that BPM and predict next one
         # if no, check for updated BPM
 
-
+        # esp32 implementation note: can also use accelerometer/gyro data to cross-check beat and maintain timing
+        # will need to multiply by 2 since movement is usually half a cycle per beat
+        # if multiple audio sources confirm a beat detection at 1x/2x IMU frequency, then can lock on even if audio
+        #   source lose lock and IMU movement still ongoing
